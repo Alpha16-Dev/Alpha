@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <title>Loan Predict</title>
+  </head>
+
+  <body style="background-color: rgb(1, 1, 95);">
+
+<div style="background-color: dodgerblue;" class="container main">
+  <div style="background-color: rgb(0, 217, 255);" class="jumbotron" id="holder">
+     <br>
+       <center><b></b></center>
+     <br>
+     <br>
+    <center><h1 class='main_heading'> Telecom Customer Churn Prediction</h1></center>
+	<p>Machine Learning Algorithm to predict whether a customer is more likely to churn or not.</p>
+	<p>This Model of This Web Based Application is processed by a 81.08% recall using logist regression</p>
+	<p><b>Please fill the form below</b></p>
+    <br>
+    <form style="background-color: rgb(0, 255, 221);" class="form-horizontal" action="/predict"method="post">
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type= "text" name="tenure" placeholder="Enter your Tenure" required="required" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type="text" name="MonthlyCharges" placeholder="Enter Your monthly charges" required="required" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type="text" name="TotalCharges" placeholder="Enter Your Total charges" required="required" />
+        </div>
+	  </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number" name="SeniorCitizen" required="required">
+                <option value="0">Are you a Senior Citizen? Choose</option>
+                <option value="1">yes</option>
+                <option value="0">no</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number"  name="Dependents" required="required">
+                <option value="0">Do you have Dependents? </option>
+                <option value="1">yes</option>
+                <option value="0">no</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number" name="PhoneService" required="required">
+                <option value="0">Do you have PhoneService?</option>
+                <option value="1">yes</option>
+                <option value="0">no</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number" name="MultipleLines" required="required">
+                <option value="0">MultipleLines?</option>
+                <option value="2">yes</option>
+                <option value="1">No phone service</option>
+                <option value="0">no</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number" name="InternetService" required="required">
+                <option value="0">InternetService?</option>
+                <option value="2">DSL</option>
+                <option value="1">Fiber optic</option>
+                <option value="0">no</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number" name="OnlineSecurity" required="required">
+                <option value="0">OnlineSecurity?</option>
+                <option value="2">No internet service</option>
+                <option value="1">yes</option>
+                <option value="0">no</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number" name="OnlineBackup" required="required">
+                <option value="0">OnlineBackup?</option>
+                <option value="2">No internet service</option>
+                <option value="1">yes</option>
+                <option value="0">no</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number" name="DeviceProtection" required="required">
+                <option value="0">DeviceProtection?</option>
+                <option value="2">No internet service</option>
+                <option value="1">yes</option>
+                <option value="0">no</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number" name="TechSupport" required="required">
+                <option value="0">TechSupport?</option>
+                <option value="2">No internet service</option>
+                <option value="1">yes</option>
+                <option value="0">no</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number" name="StreamingTV" required="required">
+                <option value="0">StreamingTV?</option>
+                <option value="2">No internet service</option>
+                <option value="1">yes</option>
+                <option value="0">no</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number" name="StreamingMovies" required="required">
+                <option value="0">StreamingMovies?</option>
+                <option value="2">No internet service</option>
+                <option value="1">yes</option>
+                <option value="0">no</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number" name="Contract" required="required">
+                <option value="0">Choose Type of Contract</option>
+                <option value="2">Two year</option>
+                <option value="1">One year</option>
+                <option value="0">Month-to-month</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number" name="PaymentMethod" required="required">
+                <option value="0">Choose Payment Method</option>
+                <option value="3">Mailed check</option>
+                <option value="2">Electronic check</option>
+                <option value="1">Credit card (automatic)</option>
+                <option value="0">Bank transfer (automatic)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number"  name="PaperlessBilling" required="required">
+                <option value="0">Do you do Paperless Billing</option>
+                <option value="1">yes</option>
+                <option value="0">no</option>
+          </select>
+        </div>
+      </div>
+
+       <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number"  name="Partner" required="required">
+                <option value="0">Do you have a partner</option>
+                <option value="1">yes</option>
+                <option value="0">no</option>
+          </select>
+        </div>
+      </div>
+
+       <div class="form-group">
+        <div class="col-sm-10">
+          <select class="form-control" type="number"  name="gender" required="required">
+                <option value="0">Please choose your gender</option>
+                <option value="1">male</option>
+                <option value="0">female</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="button btn btn-default">PREDICT</button>
+        </div>
+      </div>
+    </form>
+
+    <br>
+    <br>
+
+        {{ prediction_text }}
+
+  </div>
+  </div>
+
+  </body>
+</html>
